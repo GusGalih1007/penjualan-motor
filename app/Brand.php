@@ -12,4 +12,9 @@ class Brand extends Model
     protected $fillable = [
         'brandName',
     ];
+
+    public function Motors()
+    {
+        return $this->hasMany(Motors::class, 'motorId', 'motorId'); // Assuming you have a Product model
+    }
 }
