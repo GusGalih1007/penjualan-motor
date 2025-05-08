@@ -12,4 +12,10 @@ class Category extends Model
     protected $fillable = [
         'categoryName',
     ];
+
+    // Example of a relationship
+    public function Motors()
+    {
+        return $this->hasMany(Motors::class, 'motorId', 'motorId'); // Assuming you have a Product model
+    }
 }

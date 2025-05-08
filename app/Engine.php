@@ -12,4 +12,9 @@ class Engine extends Model
     protected $fillable = [
         'cc',
     ];
+
+    public function Motors()
+    {
+        return $this->hasMany(Motors::class, 'motorId', 'motorId'); // Assuming you have a Product model
+    }
 }

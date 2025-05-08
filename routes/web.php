@@ -5,6 +5,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EngineController;
+use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\MotorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +55,17 @@ Route::post('/engine', [EngineController::class, 'store'])->name('engine.store')
 Route::get('/engine/edit/{id}', [EngineController::class, 'edit'])->name('engine.edit');
 Route::put('/engine/{id}', [EngineController::class, 'update'])->name('engine.update');
 Route::delete('/engine/{id}', [EngineController::class, 'destroy'])->name('engine.destroy');
+
+Route::get('/customer', [CustomersController::class, 'index'])->name('customer.index');
+Route::get('/customer/create', [CustomersController::class, 'create'])->name('customer.create');
+Route::post('/customer', [CustomersController::class, 'store'])->name('customer.store');
+Route::get('/customer/edit/{id}', [CustomersController::class, 'edit'])->name('customer.edit');
+Route::put('/customer/{id}', [CustomersController::class, 'update'])->name('customer.update');
+Route::delete('/customer/{id}', [CustomersController::class, 'destroy'])->name('customer.destroy');
+
+Route::get('/motor', [MotorsController::class, 'index'])->name('motor.index');
+Route::get('/motor/create', [MotorsController::class, 'create'])->name('motor.create');
+Route::post('/motor', [MotorsController::class, 'store'])->name('motor.store');
+Route::get('/motor/edit/{id}', [MotorsController::class, 'edit'])->name('motor.edit');
+Route::put('/motor/{id}', [MotorsController::class, 'update'])->name('motor.update');
+Route::delete('/motor/{id}', [MotorsController::class, 'destroy'])->name('motor.destroy');
