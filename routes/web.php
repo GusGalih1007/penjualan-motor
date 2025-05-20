@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EngineController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\MotorsController;
+use App\Http\Controllers\AuthenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,15 @@ use App\Http\Controllers\MotorsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 // Auth::routes();
-
+Route::get('/login', [AuthenController::class, 'showlogin'])->name('login');
+Route::post('/login', [AuthenController::class, 'proseslogin'])->name('login.post');
+Route::get('/register', [AuthenController::class, 'showregister'])->name('register');
+Route::post('/register', [AuthenController::class, 'prosesregister'])->name('register.post');
+Route::get('/logout', [AuthenController::class, 'logout'])->name('logout');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
