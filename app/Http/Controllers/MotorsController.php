@@ -53,7 +53,7 @@ class MotorsController extends Controller
             'condition' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            'photo' => 'nullable|image|mimes:jpg,png,jpeg|max:2048', // Validasi foto
+            'photo' => 'nullable|image|mimes:jpg,png,jpeg', // Validasi foto
         ]);
 
         $photoPath = null; //motor-photo/penjualan-motor.png
