@@ -6,20 +6,26 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                @if(session('Unauthorized'))
+                <div class="alert alert-danger">
+                    {{ session('Unauthorized') }}
+                </div>
+                @endif
               <div class="brand-logo">
                 <img src="{{asset('starAdmin2/images/logo.svg')}}" alt="logo">
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="fw-light">Sign in to continue.</h6>
-              <form class="pt-3">
+              <form class="pt-3" action="{{ route('login.post') }}" method="POST">
+                {{ csrf_field() }}
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                  <input type="email" name="email" class="form-control form-control-lg" placeholder="Username">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                 </div>
               </form>
             </div>

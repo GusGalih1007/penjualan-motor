@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EngineController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\MotorsController;
+use App\Http\Controllers\AuthenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,21 +20,30 @@ use App\Http\Controllers\MotorsController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 // Auth::routes();
-
+Route::get('/login', [AuthenController::class, 'showlogin'])->name('login');
+Route::post('/login', [AuthenController::class, 'proseslogin'])->name('login.post');
+Route::get('/logout', [AuthenController::class, 'logout'])->name('logout');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user', [UsersController::class, 'index'])->name('users.index');
-Route::get('/user/create', [UsersController::class, 'create'])->name('users.create');
-Route::post('/user', [UsersController::class, 'store'])->name('users.store');
-Route::get('/user/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
-Route::put('/user/{id}', [UsersController::class, 'update'])->name('users.update');
-Route::delete('/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+
+// Route::middleware('role:admin')->group(function () {
+    Route::get('/user', [UsersController::class, 'index'])->name('users.index');
+    Route::get('/user/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('/user', [UsersController::class, 'store'])->name('users.store');
+    Route::get('/user/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('/user/{id}', [UsersController::class, 'update'])->name('users.update');
+    Route::delete('/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+// });
 
 Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
 Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create');
