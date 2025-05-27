@@ -17,7 +17,7 @@
     <div class="navbar-menu-wrapper d-flex align-items-top">
       <ul class="navbar-nav">
         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-          <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+          <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">{{ Auth::user()->userName }}</span></h1>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
@@ -27,8 +27,8 @@
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
             <div class="dropdown-header text-center">
               <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
-              <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-              <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+              <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->userName }}</p>
+              <p class="fw-light text-muted mb-0">{{ Auth::user()->email }}</p>
             </div>
           </div>
         </li>

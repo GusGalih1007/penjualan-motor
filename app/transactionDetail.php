@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\transactions;
+use App\transaction;
 use App\Motors;
 
 class transactionDetail extends Model
@@ -20,11 +20,11 @@ class transactionDetail extends Model
 
     public function transaction()
     {
-        return $this->belongsTo(Transactions::class, 'transactionId', 'transactionId');
+        return $this->belongsTo(transaction::class, 'transactionId', 'transactionId');
     }
 
     public function motor()
     {
-        return $this->belongsTo(Products::class, 'motorId', 'motorId');
+        return $this->belongsTo(Motors::class, 'motorId', 'motorId');
     }
 }

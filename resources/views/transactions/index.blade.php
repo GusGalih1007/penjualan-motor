@@ -26,7 +26,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $transaction->transactionId }}</td>
                                 <td>{{ $transaction->customer->customerName ?? 'Guest' }}</td>
-                                <td>Rp. {{ number_format($transaction->total_amount, 2) }}</td>
+                                <td>Rp. {{ number_format($transaction->totalAmount, 2) }}</td>
                                 <td>Rp. {{ number_format($transaction->payment->amount ?? 0, 2) }}</td>
                                 <td>{{ $transaction->users->userName }}</td>
                                 <td>{{ ucfirst($transaction->status) }}</td>
@@ -37,7 +37,7 @@
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route('report.generateid', $transaction->transactionId) }}" class="btn btn-warning btn-sm" target="_blank">Print</a>
+                                        {{-- <a href="{{ route('report.generateid', $transaction->transactionId) }}" class="btn btn-warning btn-sm" target="_blank">Print</a> --}}
                                         <a href="{{ route('transaction.show', $transaction->transactionId) }}"
                                             class="btn btn-success btn-sm">Detail</a>
                                         <button type="submit"  class="btn btn-danger btn-sm"

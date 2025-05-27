@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Category;
+use App\Engine;
+use App\Brand;
+
 class Motors extends Model
 {
     protected $table = 'tbl_motors';

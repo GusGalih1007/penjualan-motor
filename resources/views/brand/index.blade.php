@@ -12,7 +12,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Brand Name</th>
-                                <th>Action | <a href="{{ route('brand.create') }}">Add</a></th>
+                                <th>Action | <a href="{{ route('brand.create') }}" class="btn btn-success btn-sm">Add</a></th>
                             </tr>
                         </thead>
                         <tbody>

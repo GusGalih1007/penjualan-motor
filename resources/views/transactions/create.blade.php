@@ -30,9 +30,9 @@
                     <label for="payment_method">Metode Pembayaran</label>
                     <select name="payment_method" id="payment_method" class="form-control" required>
                         <option value="">Pilih Metode Pembayaran</option>
-                        <option value="cash">Tunai</option>
-                        <option value="credit_card">Kartu Kredit</option>
-                        <option value="transfer">Transfer Bank</option>
+                        <option value="Cash">Tunai</option>
+                        <option value="Credit Card">Kartu Kredit</option>
+                        <option value="Transfer">Transfer Bank</option>
                     </select>
                     @if ($errors->has('payment_method'))
                         <span class="label label-danger">{{ $errors->first('payment_method') }}</span>
