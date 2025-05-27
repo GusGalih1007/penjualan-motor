@@ -22,7 +22,7 @@ class TransactionController extends Controller
     {
         // Menampilkan daftar transaksi
         $transactions = transaction::with(
-            'detail.motor',
+            'details.motor',
             'customer',
             'payment',
             'users')->orderBy('transactionId', 'desc')->get();
@@ -98,7 +98,7 @@ class TransactionController extends Controller
             'status'            => "completed"
         ]);
 
-        dd(Auth::id());
+        // dd(Auth::id());
 
         // Simpan detail transaksi ke tabel 'transaction_details'
         foreach ($motors as $motor) {
@@ -123,7 +123,7 @@ class TransactionController extends Controller
             'amount'         => $request->payment,
             'change'         => $request->change,
             'payment_date'   => today(),
-            'user_id'       => Auth::id(),  // ID user yang menerima pembayaran
+            'userId'       => Auth::id(),  // ID user yang menerima pembayaran
         ]);
 
         // Redirect atau kirim respons sukses
@@ -138,7 +138,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $transaction = transaction::with('detail.motor', 'customer', 'payment', 'users')->findOrFail($id);
+        $transaction = transaction::with('details.motor', 'customer', 'payment', 'users')->findOrFail($id);
 
         return view('transactions.show', compact('transaction'));
     }

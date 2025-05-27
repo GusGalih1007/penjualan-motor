@@ -20,9 +20,9 @@ class transaction extends Model
         'status',
     ];
 
-    public function detail()
+    public function details()
     {
-        return $this->hasMany( transactionDetail::class, 'transactionId', 'transactionId');
+        return $this->hasMany(transactionDetail::class, 'transactionId', 'transactionId');
     }
 
     public function payment()

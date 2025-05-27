@@ -12,7 +12,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Engine cc</th>
-                                <th>Action | <a href="{{ route('engine.create') }}">Add</a></th>
+                                <th>Action | <a href="{{ route('engine.create') }}" class="btn btn-success btn-sm">Add</a></th>
                             </tr>
                         </thead>
                         <tbody>

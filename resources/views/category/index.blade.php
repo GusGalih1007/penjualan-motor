@@ -12,7 +12,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>category Name</th>
-                                <th>Action | <a href="{{ route('category.create') }}">Add</a></th>
+                                <th>Action | <a href="{{ route('category.create') }}" class="btn btn-success btn-sm">Add</a></th>
                             </tr>
                         </thead>
                         <tbody>

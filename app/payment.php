@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Transactions;
+use App\transaction;
 use App\Users;
 
 class payment extends Model
@@ -21,7 +21,7 @@ class payment extends Model
 
     public function transaction()
     {
-        return $this->belongsTo(Transactions::class, 'transactionId', 'transactionId');
+        return $this->belongsTo(transaction::class, 'transactionId', 'transactionId');
     }
 
     public function users()
