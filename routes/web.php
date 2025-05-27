@@ -8,6 +8,7 @@ use App\Http\Controllers\EngineController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\MotorsController;
 use App\Http\Controllers\AuthenController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,13 @@ use App\Http\Controllers\AuthenController;
 Route::get('/', function () {
     return redirect(route('login'));
 });
+
+//membuat route transactions
+    Route::get('transaction', [TransactionController::class, 'index'])->name('transaction.index');
+    Route::get('transaction/create', [TransactionController::class, 'create'])->name('transaction.create');
+    Route::post('transaction', [TransactionController::class, 'store'])->name('transaction.store');
+    Route::get('transaction/{id}', [TransactionController::class, 'show'])->name('transaction.show');
+    Route::delete('transaction/{id}', [TransactionController::class, 'destroy'])->name('transaction.destroy');
 
 // Auth::routes();
 Route::get('/login', [AuthenController::class, 'showlogin'])->name('login');
