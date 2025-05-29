@@ -19,11 +19,10 @@
                                 {{$value->customerName}} | {{($value->member_status == 1) ? 'Member' : 'Non-member'}}
                             </option>
                             @endforeach
-                        </select></br>
+                        </select>
                         @if ($errors->has('customerId'))
                         <span class="label label-danger">{{ $errors->first('customerId') }}</span>
                         @endif
-                    </select>
                 </div>
 
                 <div class="form-group">

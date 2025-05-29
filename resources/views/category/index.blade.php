@@ -27,7 +27,7 @@
                                         @method('DELETE')
 
                                         <a href="{{ route('category.edit', $category->categoryId) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <button type="submit" onclick="return confirm" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </td>
                             </tr>

@@ -47,12 +47,12 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="member_status" id="member_status1" value="1">
-                                True
+                                Yes
                             </label>
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="member_status" id="member_status2" value="0" checked>
-                                False
+                                No
                             </label>
                         </div>
                     </div>

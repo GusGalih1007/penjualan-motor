@@ -119,10 +119,14 @@ class UsersController extends Controller
         }
 
 
-        $data->update($field);
+        $update = $data->update($field);
 
+        if ($update) {
+            return redirect()->route('users.index')->with('success', 'User updated successfully');
+        } else {
+            return redirect()->route('users.create')->with('error', 'Update fail');
+        }
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
 
     /**
@@ -133,7 +137,11 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        Users::where('userId', $id)->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+        $delete = Users::where('userId', $id)->delete();
+        if (!$delete) {
+            return redirect()->route('users.index')->with('error', 'User deleted failed');
+        } else {
+            return redirect()->route('users.index')->with('success', 'User deleted successfully');
+        }
     }
 }

@@ -10,6 +10,10 @@
                 <div class="alert alert-danger">
                     {{ session('Unauthorized') }}
                 </div>
+                @elseif (session('Failed'))
+                <div class="alert alert-danger">
+                    {{ session('Failed') }}
+                </div>
                 @endif
               <div class="brand-logo">
                 <img src="{{asset('starAdmin2/images/logo.svg')}}" alt="logo">
@@ -19,10 +23,12 @@
               <form class="pt-3" action="{{ route('login.post') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
-                  <input type="email" name="email" class="form-control form-control-lg" placeholder="Username">
+                  <input type="email" name="email" class="form-control form-control-lg" placeholder="Email">
+                  <span class="text-danger">{{ $errors->first('email') }}</span>
                 </div>
                 <div class="form-group">
                   <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
+                  <span class="text-danger">{{ $errors->first('password') }}</span>
                 </div>
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>

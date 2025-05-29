@@ -7,8 +7,8 @@
             <div class="card-body">
                 <h4 class="card-title">Data Transactions</h4>
                 <div class="table-responsive pt-3">
-                    <table class="table table-bordered table-hover">
-                        <thead>
+                    <table class="table table-bordered table-hover text-wrap" id="example1">
+                        <thead class="bg-info text-white">
                             <th>No</th>
                                 <th>Transaction Id</th>
                                 <th>Customer</th>
@@ -37,7 +37,7 @@
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        {{-- <a href="{{ route('report.generateid', $transaction->transactionId) }}" class="btn btn-warning btn-sm" target="_blank">Print</a> --}}
+                                        <a href="{{ route('report.generateId', $transaction->transactionId) }}" class="btn btn-warning btn-sm" target="_blank">Print</a>
                                         <a href="{{ route('transaction.show', $transaction->transactionId) }}"
                                             class="btn btn-success btn-sm">Detail</a>
                                         <button type="submit"  class="btn btn-danger btn-sm"

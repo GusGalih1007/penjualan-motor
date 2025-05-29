@@ -11,7 +11,17 @@ class AuthenController extends Controller
 {
     public function showlogin()
     {
-        return view('authen.login');
+        if (!Auth::check()) {
+            return view('authen.login');
+        }
+        elseif (Auth::user()->role == 'Admin')
+        {
+            return redirect()->route('users.index');
+        } else {
+            return redirect()->route('transaction.index');
+        }
+
+        
     }
 
     public function proseslogin( Request $request)
@@ -28,7 +38,7 @@ class AuthenController extends Controller
             if (Auth::user()->role == 'Admin') {
                 return redirect()->intended('/user')->with('Success', 'You have successfully logged in');
             } else {
-                return redirect()->intended('/motor')->with('Success', 'You have successfully logged in');
+                return redirect()->intended('/transaction')->with('Success', 'You have successfully logged in');
             }
         } else {
             return redirect()->route('login')->with('Failed', 'Invalid login credentials');
