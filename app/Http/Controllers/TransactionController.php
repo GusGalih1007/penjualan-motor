@@ -127,7 +127,7 @@ class TransactionController extends Controller
         ]);
 
         // Redirect atau kirim respons sukses
-        return redirect()->route('transaction.index');
+        return redirect()->route('transaction.index')->with('success', 'Transaction created successfully');
     }
 
     /**
@@ -174,7 +174,10 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        transaction::where('transactionId', $id)->delete();
-        return redirect()->route('transaction.index');
+        $delete = transaction::where('transactionId', $id)->delete();
+        if (!$delete) {
+            return redirect()->route('transaction.index')->with('error','Transaction deleted failed');
+        }
+        return redirect()->route('transaction.index')->with('success', 'Transaction deleted successfully');
     }
 }

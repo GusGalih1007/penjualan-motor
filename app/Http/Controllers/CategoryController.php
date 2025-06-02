@@ -23,10 +23,13 @@ class CategoryController extends Controller
         'categoryName' => 'required|string|max:255'
     ]);
 
-    Category::create([
+    $create = Category::create([
         'categoryName' => $request->categoryName
     ]);
 
+    if(!$create) {
+        return redirect()->route('category.index')->with('error', 'category gagal ditambahkan.');
+    }
     return redirect()->route('category.index')->with('success', 'category berhasil ditambahkan.');
 }
 
@@ -45,18 +48,24 @@ class CategoryController extends Controller
     ]);
 
     $category = Category::findOrFail($id);
-    $category->update([
+    $update = $category->update([
         'categoryName' => $request->categoryName // Sesuaikan dengan nama field di database
     ]);
 
+    if (!$update) {
+        return redirect()->route('category.index')->with('error', 'Category update failed.');
+    }
     return redirect()->route('category.index')->with('success', 'Category updated successfully.');
 }
 
     public function destroy($id)
     {
         $category = Category::find($id);
-        $category->delete();
+        $delete = $category->delete();
 
+        if (!$delete) {
+            return redirect()->route('category.index')->with('error', 'category delete failed.');
+        }
         return redirect()->route('category.index')->with('success', 'category deleted.');
     }
 }

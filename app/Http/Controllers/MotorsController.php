@@ -64,7 +64,7 @@ class MotorsController extends Controller
             store('motor-photos', 'public'); // Simpan ke folder public/storage
         }
 
-        Motors::create([
+        $create = Motors::create([
             'motorName' => $request->motorName,
             'color' => $request->color,
             'categoryId' => $request->categoryId,
@@ -77,7 +77,10 @@ class MotorsController extends Controller
             'photo' => $photoPath,
         ]);
 
-        return redirect(route('motor.index'));
+        if (!$create) {
+            return redirect(route('motor.index'))->with('error', 'Motor created failed');
+        }
+        return redirect(route('motor.index'))->with('success', 'Motor created successfully');
     }
 
     /**
@@ -143,7 +146,7 @@ class MotorsController extends Controller
             store('motor-photos', 'public'); // Simpan foto baru
         }
 
-        $dataUpdatemotors->update([
+        $update = $dataUpdatemotors->update([
             'motorName' => $request->motorName,
             'color' => $request->color,
             'categoryId' => $request->categoryId,
@@ -156,7 +159,10 @@ class MotorsController extends Controller
             'photo' => $photoPath,
         ]);
 
-        return redirect(route('motor.index'));
+        if (!$update) {
+            return redirect(route('motor.index'))->with('error', 'Motor updated failed');
+        }
+        return redirect(route('motor.index'))->with('success', 'Motor updated successfully');
     }
 
     /**
@@ -167,7 +173,10 @@ class MotorsController extends Controller
      */
     public function destroy($id)
     {
-        Motors::where('motorId', $id)->delete();
-        return redirect(route('motor.index'));
+        $delete = Motors::where('motorId', $id)->delete();
+        if (!$delete) {
+            return redirect(route('motor.index'))->with('error', 'Motor deleted failed');
+        }
+        return redirect(route('motor.index'))->with('success', 'Motor deleted successfully');   
     }
 }

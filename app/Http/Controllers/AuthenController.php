@@ -16,12 +16,12 @@ class AuthenController extends Controller
         }
         elseif (Auth::user()->role == 'Admin')
         {
-            return redirect()->route('users.index');
+            return redirect()->route('motor.index');
         } else {
             return redirect()->route('transaction.index');
         }
 
-        
+
     }
 
     public function proseslogin( Request $request)

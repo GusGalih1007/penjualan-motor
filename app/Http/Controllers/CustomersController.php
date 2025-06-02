@@ -44,7 +44,7 @@ class CustomersController extends Controller
             'address'       => 'required'
         ]);
 
-        Customers::create([
+        $create = Customers::create([
             'customerName' => $request->customerName,
             'email'         => $request->email,
             'phone'         => $request->phone,
@@ -52,7 +52,10 @@ class CustomersController extends Controller
             'address'       => $request->address
         ]);
 
-        return redirect(route('customer.index'));
+        if (!$create) {
+            return redirect()->route('customer.index')->with('error', 'Customer created failed');
+        }
+        return redirect(route('customer.index'))->with('success', 'Customer created successfully');
     }
 
     /**
@@ -96,7 +99,7 @@ class CustomersController extends Controller
         ]);
 
         $updateDatacustomer = Customers::findOrFail($id);
-        $updateDatacustomer->update([
+        $update = $updateDatacustomer->update([
             'customerName' => $request->customerName,
             'email'         => $request->email,
             'phone'         => $request->phone,
@@ -104,7 +107,10 @@ class CustomersController extends Controller
             'address'       => $request->address
         ]);
 
-        return redirect(route('customer.index'));
+        if (!$update) {
+            return redirect()->route('customer.index')->with('error', 'Customer update failed');
+        }
+        return redirect(route('customer.index'))->with('success', 'Customer updated successfully');
     }
 
     /**
@@ -115,7 +121,11 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        Customers::where('customerId', $id)->delete();
-        return redirect(route('customer.index'));
+        $delete = Customers::where('customerId', $id)->delete();
+
+        if (!$delete) {
+            return redirect(route('customer.index'))->with('error', 'Customer deleted failed');
+        }
+        return redirect(route('customer.index'))->with('success', 'Customer deleted successfully');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Seeder;
 use App\transaction;
 use App\transactionDetail;
@@ -36,7 +37,7 @@ class TransactionSeeder extends Seeder
             'amount' => 25000000,
             'change' => 5000000,
             'payment_method' => 'Tunai',
-            'payment_date' => '2023-01-01',
+            'payment_date' => today(),
         ]);
     }
 }

@@ -21,12 +21,15 @@ class BrandController extends Controller
         $validated = $request->validate([
             'brandName' => 'required|string|max:255'
         ]);
-    
-        Brand::create([
+
+        $create = Brand::create([
             'brandName' => $request->brandName // Correct access
         ]);
-    
-        return redirect()->route('brand.index');
+
+        if (!$create) {
+            return redirect()->route('brand.index')->with('error', 'Brand gagal ditambahkan.');
+        }
+        return redirect()->route('brand.index')->with('success', 'Brand berhasil ditambahkan.');
     }
 
 
@@ -42,12 +45,15 @@ class BrandController extends Controller
         $validated = $request->validate([
             'brandName' => 'required|string|max:255'
         ]);
-    
+
         $brand = Brand::findOrFail($id);
-        $brand->update([
+        $update = $brand->update([
             'brandName' => $request->brandName // Correct property access
         ]);
-    
+
+        if (!$update) {
+            return redirect()->route('brand.index')->with('error', 'Brand update failed.');
+        }
         return redirect()->route('brand.index')->with('success', 'Brand updated successfully.');
     }
 
@@ -55,8 +61,11 @@ class BrandController extends Controller
     public function destroy($id)
     {
         $brand = Brand::find($id);
-        $brand->delete();
+        $delete = $brand->delete();
 
+        if (!$delete) {
+            return redirect()->route('brand.index')->with('error', 'Brand delete failed.');
+        }
         return redirect()->route('brand.index')->with('success', 'Brand deleted.');
     }
 }

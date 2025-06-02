@@ -4,6 +4,11 @@
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
+            @if (session('success'))
+            <span class="alert alert-success">{{ session('success') }}</span>
+            @elseif (session('error'))
+            <span class="alert alert-danger">{{ session('error') }}</span>
+            @endif
             <div class="card-body">
                 <h4 class="card-title">Stock Motorcycle</h4>
                 <div class="table-responsive pt-3">

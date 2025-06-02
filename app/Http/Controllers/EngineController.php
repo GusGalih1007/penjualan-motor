@@ -23,10 +23,13 @@ class EngineController extends Controller
         'cc' => 'required|string|max:255' // Changed from engineName to cc
     ]);
 
-    Engine::create([
+    $create = Engine::create([
         'cc' => $request->cc // Changed from engineName to cc
     ]);
 
+    if (!$create) {
+        return redirect()->route('engine.index')->with('error', 'Engine gagal ditambahkan.');
+    }
     return redirect()->route('engine.index')->with('success', 'Engine berhasil ditambahkan.');
 }
 
@@ -43,19 +46,26 @@ class EngineController extends Controller
         $request->validate([
             'cc' => 'required|string|max:255'
         ]);
-    
+
         $engine = Engine::findOrFail($id);
-        $engine->update($request->only('cc'));
-    
+        $update = $engine->update($request->only('cc'));
+
+        if (!$update) {
+            return redirect()->route('engine.index')->with('error', 'Engine update failed.');
+        }
+
         return redirect()->route('engine.index')->with('success', 'Engine updated successfully.');
     }
 
     public function destroy($id)
     {
         $engine = Engine::find($id);
-        $engine->delete();
+        $delete = $engine->delete();
 
-        return redirect()->route('engine.index')->with('success', 'engine deleted.');
+        if (!$delete) {
+            return redirect()->route('engine.index')->with('error', 'Engine delete failed.');
+        }
+        return redirect()->route('engine.index')->with('success', 'Engine deleted.');
     }
 }
 
