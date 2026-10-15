@@ -196,7 +196,7 @@ Project ini menggunakan lisensi [MIT](https://opensource.org/licenses/MIT).
 
 ## 👨‍💻 Author
 
-**Gus Galih**
+**Gusti Muhammad Galih Fahreza**
 - GitHub: [@GusGalih1007](https://github.com/GusGalih1007)
 
 ---
