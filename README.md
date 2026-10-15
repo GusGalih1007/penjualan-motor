@@ -186,14 +186,6 @@ php artisan storage:link
 chmod -R 775 storage bootstrap/cache
 ```
 
----
-
-## 📝 Lisensi
-
-Project ini menggunakan lisensi [MIT](https://opensource.org/licenses/MIT).
-
----
-
 ## 👨‍💻 Author
 
 **Gusti Muhammad Galih Fahreza**
