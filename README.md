@@ -1,61 +1,216 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Penjualan Motor 🏍️
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Aplikasi penjualan motor berbasis **Laravel 7** dengan sistem multi-role (Admin & Cashier). Aplikasi ini digunakan untuk mengelola data penjualan, pembelian, dan transaksi sepeda motor.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Fitur
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 🔐 **Autentikasi Multi-Role** (Admin & Cashier)
+- 🏍️ **Manajemen Data Motor**
+- 👥 **Manajemen Data Pelanggan**
+- 💰 **Transaksi Penjualan**
+- 📊 **Laporan Penjualan**
+- 📦 **Manajemen Stok**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🛠️ Persyaratan Sistem
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pastikan environment Anda sudah terinstall:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **PHP** >= 7.2.5
+- **Composer** >= 2.x
+- **Node.js** >= 12.x & **NPM**
+- **MySQL** / **MariaDB**
+- **Git**
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 🚀 Instalasi
 
-### Premium Partners
+### 1. Clone Repository
+```bash
+git clone https://github.com/GusGalih1007/penjualan-motor.git
+cd penjualan-motor
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+### 2. Install Dependencies
+Install dependency PHP (Composer):
+```bash
+composer install
+```
 
-## Contributing
+Install dependency Node.js (NPM):
+```bash
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Konfigurasi Environment
+Copy file `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
 
-## Code of Conduct
+Generate application key:
+```bash
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Konfigurasi Database
+Buka file `.env` dan sesuaikan konfigurasi database:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=penjualan_motor
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Security Vulnerabilities
+Buat database baru di MySQL:
+```sql
+CREATE DATABASE penjualan_motor;
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 5. Migrasi Database & Seeder
+Jalankan migrasi beserta seeder default user:
+```bash
+php artisan migrate --seed
+```
 
-## License
+Atau jika ingin *fresh install*:
+```bash
+php artisan migrate:fresh --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 6. Compile Asset
+Development mode:
+```bash
+npm run dev
+```
+
+Production mode:
+```bash
+npm run production
+```
+
+### 7. Jalankan Aplikasi
+```bash
+php artisan serve
+```
+
+Akses aplikasi di browser: **[http127.0.0.1:8000](http://127.0.0.1:8000)**
+
+---
+
+## 👤 Default User
+
+Setelah menjalankan seeder, gunakan akun berikut untuk login:
+
+| Role | Email | Password | Phone |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `admin@gmail.com` | `12345678` | `123456789` |
+| **Cashier** | `cashier@gmail.com` | `12345678` | `123456789` |
+
+> ⚠️ **Penting:** Segera ubah password default setelah login pertama kali untuk alasan keamanan.
+
+---
+
+## 📁 Struktur Project
+
+```text
+penjualan-motor/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   └── Middleware/
+│   └── Models/
+├── database/
+│   ├── migrations/
+│   └── seeds/
+├── public/
+├── resources/
+│   ├── views/
+│   ├── js/
+│   └── css/
+├── routes/
+│   └── web.php
+├── storage/
+├── .env.example
+├── composer.json
+└── package.json
+```
+
+---
+
+## 🔧 Perintah Artisan Berguna
+
+```bash
+# Bersihkan cache
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+php artisan route:clear
+
+# Refresh database
+php artisan migrate:fresh --seed
+
+# List route
+php artisan route:list
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Error: `Class 'Users' not found`
+Pastikan model `Users.php` berada di `app/` atau `app/Models/`, dan namespace-nya sudah benar.
+
+### Error: `npm run dev` gagal
+Hapus folder `node_modules` lalu install ulang:
+```bash
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+### Error: Storage link
+Buat symbolic link untuk storage:
+```bash
+php artisan storage:link
+```
+
+### Error: Permission denied (Linux/Mac)
+```bash
+chmod -R 775 storage bootstrap/cache
+```
+
+---
+
+## 📝 Lisensi
+
+Project ini menggunakan lisensi [MIT](https://opensource.org/licenses/MIT).
+
+---
+
+## 👨‍💻 Author
+
+**Gus Galih**
+- GitHub: [@GusGalih1007](https://github.com/GusGalih1007)
+
+---
+
+## 🤝 Kontribusi
+
+Kontribusi selalu diterima! Silakan fork repository ini dan buat pull request.
+
+1. Fork Project
+2. Buat Branch Fitur (`git checkout -b feature/FiturBaru`)
+3. Commit Perubahan (`git commit -m 'Menambahkan Fitur Baru'`)
+4. Push ke Branch (`git push origin feature/FiturBaru`)
+5. Buat Pull Request
+
+---
+
+⭐ Jangan lupa beri **star** jika project ini bermanfaat!
